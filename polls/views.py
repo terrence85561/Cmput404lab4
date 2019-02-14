@@ -23,6 +23,7 @@ from django.views import generic
 
 # use generic instead
 class IndexView(generic.ListView):
+    # 重写属性
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
@@ -80,7 +81,7 @@ def vote(request, question_id):
     try:
         # get method returns an object
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
-        print('selected_choice is {}, type is {}'.format(selected_choice,type(selected_choice)))
+        print('selected_choice is {}, type is {}'.format(selected_choice, type(selected_choice)))
         print("request.POST return {}".format(request.POST))
     except (KeyError, Choice.DoesNotExist):
 
